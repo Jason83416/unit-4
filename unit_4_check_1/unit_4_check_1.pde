@@ -50,5 +50,8 @@ void roof() {
     //x = x + 50;
 //}
   
-  //strokeWeight(3);
+  //strokeWeight(3);   
 //}
+
+void window(){
+  
