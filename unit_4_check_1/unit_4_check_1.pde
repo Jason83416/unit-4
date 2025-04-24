@@ -1,10 +1,11 @@
-// Jason Zhao
-// 
+//Jason Zhao
+//block 2-3
 
 color beige = #fdf0d5;
 color red   = #c1121f;
 color black = #000000;
 color blue  = #669bbc;
+
 
 void setup(){
   size(800, 600);
@@ -23,6 +24,8 @@ void face(int x, int y){
   
   wall();
   roof();
+  door();
+  window();
   //hair();
   //eye();//left
   //eye(); //right
@@ -53,5 +56,17 @@ void roof() {
   //strokeWeight(3);   
 //}
 
+void door(){
+  fill(255);
+  rect(150,300,150,200);
+  fill(0);
+  ellipse(275,400,20,20);
+}
+
 void window(){
+  fill(beige);
+  rect(120,120,120,120);
+  line(120,180,240,180);
+  line(180,120,180,240);
+}
   
