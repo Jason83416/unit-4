@@ -1,0 +1,100 @@
+// Jason Zhao
+/*
+  Programming 11 - Unit 4: Advanced Drawing Project
+  Theme: "Underwater Coral Reef"
+  Objects: Fish, Coral, Bubble Cluster
+  Further simplified without any i++ usage
+*/
+
+void setup() {
+  size(800, 600);
+  noLoop();
+  drawBackgroundGradient();
+  drawSeabed(500);
+
+  // Draw corals
+  int coralCount = 0;
+  while (coralCount < 5) {
+    drawCoral(coralCount * (width / 5) + 50, height * 0.8);
+    coralCount = coralCount + 1;
+  }
+
+  // Draw fish
+  int fishCount = 0;
+  while (fishCount < 8) {
+    drawFish(random(width), random(height * 0.3, height * 0.7));
+    fishCount = fishCount + 1;
+  }
+
+  // Draw bubbles
+  int bubbleCount = 0;
+  while (bubbleCount < 6) {
+    drawBubbleCluster(random(width), random(height * 0.2, height * 0.8));
+    bubbleCount = bubbleCount + 1;
+  }
+}
+
+// Background gradient from deep to shallow water
+void drawBackgroundGradient() {
+  noFill();
+  int y = 0;
+  while (y < height) {
+    float t = float(y) / height;
+    stroke((1 - t) * 10, (1 - t) * 30 + t * 120, (1 - t) * 80 + t * 160);
+    line(0, y, width, y);
+    y = y + 1;
+  }
+}
+
+// Seabed texture
+void drawSeabed(int count) {
+  stroke(200, 180, 120);
+  int s = 0;
+  while (s < count) {
+    point(random(width), random(height * 0.75, height));
+    s = s + 1;
+  }
+}
+
+//----- Fish -----
+void drawFish(float x, float y) {
+  pushMatrix();
+  translate(x, y);
+  float scaleFactor = random(0.5, 1.0);
+  scale(scaleFactor);
+
+  noStroke();
+  fill(random(100, 255), random(50, 200), random(50, 200));
+  ellipse(0, 0, 40, 20);
+  triangle(-20, 0, -35, -10, -35, 10);
+
+  fill(255);
+  ellipse(15, -3, 8, 8);
+  fill(0);
+  ellipse(17, -3, 3, 3);
+  popMatrix();
+}
+
+//----- Coral -----
+void drawCoral(float x, float y) {
+  pushMatrix();
+  translate(x, y);
+  strokeWeight(5);
+  stroke(200, 150, 50);
+  line(0, 0, 0, -random(50, 100));
+  popMatrix();
+}
+
+//----- Bubble Cluster -----
+void drawBubbleCluster(float x, float y) {
+  pushMatrix();
+  translate(x, y);
+  stroke(255, 255, 255, 150);
+  noFill();
+  int bLocal = 0;
+  while (bLocal < 5) {
+    ellipse(random(-20, 20), random(-20, 20), random(5, 15), random(5, 15));
+    bLocal = bLocal + 1;
+  }
+  popMatrix();
+}
