@@ -1,0 +1,49 @@
+
+
+color beige = #fdf0d5;
+color black = #000000;
+
+void setup() {
+  size(800, 600);
+  noLoop();  // draw only once so random positions/colors stay static
+}
+
+void draw() {
+  background(beige);
+
+  int count = 0;
+  while (count < 5) {
+    int hx = int(random(50, 700));
+    int hy = int(random(50, 500));
+    color wc = color(random(255), random(255), random(255));
+
+    pushMatrix();
+    translate(hx, hy);
+
+    // walls
+    fill(wc);
+    stroke(black);
+    strokeWeight(2);
+    rect(0, 40, 100, 100);
+
+    // roof
+    fill(150);
+    triangle(0, 40, 50, 0, 100, 40);
+
+    // door
+    fill(255);
+    rect(40, 90, 20, 50);
+    fill(0);
+    ellipse(55, 115, 5, 5);
+
+    // window
+    fill(beige);
+    rect(10, 50, 25, 25);
+    line(10, 62.5, 35, 62.5);
+    line(22.5, 50, 22.5, 75);
+
+    popMatrix();
+
+    count = count + 1;
+  }
+}
