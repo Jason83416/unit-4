@@ -3,7 +3,6 @@
   Programming 11 - Unit 4: Advanced Drawing Project
   Theme: "Underwater Coral Reef"
   Objects: Fish, Coral, Bubble Cluster
-  Further simplified without any i++ usage
 */
 
 void setup() {
@@ -11,30 +10,12 @@ void setup() {
   noLoop();
   drawBackgroundGradient();
   drawSeabed(500);
-
-  // Draw corals
-  int coralCount = 0;
-  while (coralCount < 5) {
-    drawCoral(coralCount * (width / 5) + 50, height * 0.8);
-    coralCount = coralCount + 1;
-  }
-
-  // Draw fish
-  int fishCount = 0;
-  while (fishCount < 8) {
-    drawFish(random(width), random(height * 0.3, height * 0.7));
-    fishCount = fishCount + 1;
-  }
-
-  // Draw bubbles
-  int bubbleCount = 0;
-  while (bubbleCount < 6) {
-    drawBubbleCluster(random(width), random(height * 0.2, height * 0.8));
-    bubbleCount = bubbleCount + 1;
-  }
+  drawCorals(5);
+  drawFishSwarm(8);
+  drawBubblesSwarm(6);
 }
 
-// Background gradient from deep to shallow water
+// Draw background gradient
 void drawBackgroundGradient() {
   noFill();
   int y = 0;
@@ -46,13 +27,46 @@ void drawBackgroundGradient() {
   }
 }
 
-// Seabed texture
+// Draw seabed texture
 void drawSeabed(int count) {
   stroke(200, 180, 120);
   int s = 0;
   while (s < count) {
     point(random(width), random(height * 0.75, height));
     s = s + 1;
+  }
+}
+
+// Draw multiple corals
+void drawCorals(int count) {
+  int i = 0;
+  while (i < count) {
+    float x = i * (width / count) + (width / (2 * count));
+    float y = height * 0.8;
+    drawCoral(x, y);
+    i = i + 1;
+  }
+}
+
+// Draw multiple fish
+void drawFishSwarm(int count) {
+  int i = 0;
+  while (i < count) {
+    float x = random(width);
+    float y = random(height * 0.3, height * 0.7);
+    drawFish(x, y);
+    i = i + 1;
+  }
+}
+
+// Draw multiple bubble clusters
+void drawBubblesSwarm(int count) {
+  int i = 0;
+  while (i < count) {
+    float x = random(width);
+    float y = random(height * 0.2, height * 0.8);
+    drawBubbleCluster(x, y);
+    i = i + 1;
   }
 }
 
