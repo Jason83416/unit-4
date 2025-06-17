@@ -1,8 +1,7 @@
 // Jason Zhao
 /*
   Programming 11 - Unit 4: Advanced Drawing Project
-  Theme: "Underwater Coral Reef"
-  Objects: Fish, Coral, Bubble Cluster
+ 
 */
 
 void setup() {
@@ -15,7 +14,7 @@ void setup() {
   drawBubblesSwarm(6);
 }
 
-// Draw background gradient
+// background 
 void drawBackgroundGradient() {
   noFill();
   int y = 0;
@@ -27,7 +26,7 @@ void drawBackgroundGradient() {
   }
 }
 
-// Draw seabed texture
+// sea bed
 void drawSeabed(int count) {
   stroke(200, 180, 120);
   int s = 0;
@@ -37,7 +36,7 @@ void drawSeabed(int count) {
   }
 }
 
-// Draw multiple corals
+// corals
 void drawCorals(int count) {
   int i = 0;
   while (i < count) {
@@ -48,7 +47,7 @@ void drawCorals(int count) {
   }
 }
 
-// Draw multiple fish
+// fish
 void drawFishSwarm(int count) {
   int i = 0;
   while (i < count) {
@@ -59,7 +58,7 @@ void drawFishSwarm(int count) {
   }
 }
 
-// Draw multiple bubble clusters
+// bubble clusters
 void drawBubblesSwarm(int count) {
   int i = 0;
   while (i < count) {
@@ -70,7 +69,7 @@ void drawBubblesSwarm(int count) {
   }
 }
 
-//----- Fish -----
+//Fish 
 void drawFish(float x, float y) {
   pushMatrix();
   translate(x, y);
@@ -89,7 +88,7 @@ void drawFish(float x, float y) {
   popMatrix();
 }
 
-//----- Coral -----
+//Coral 
 void drawCoral(float x, float y) {
   pushMatrix();
   translate(x, y);
@@ -99,7 +98,7 @@ void drawCoral(float x, float y) {
   popMatrix();
 }
 
-//----- Bubble Cluster -----
+//Bubble Cluster
 void drawBubbleCluster(float x, float y) {
   pushMatrix();
   translate(x, y);
